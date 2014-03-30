@@ -16,9 +16,9 @@ module ActiveRecord
           finder_class = find_finder_class_for(record)
           table = finder_class.arel_table
 
-          coder = record.class.serialized_attributes[attribute.to_s] # FIXME add/test support for serialized attributes with globalize3
+          coder = record.class.serialized_attributes[attribute.to_s] # FIXME add/test support for serialized attributes with globalize
 
-          # determine table / attr_column_class respecting globalize3 translations
+          # determine table / attr_column_class respecting globalize translations
           globalized_column_class = find_globalized_column_class_for(record, attribute)
           globalized = globalized_column_class.present?
           if globalized
@@ -32,13 +32,13 @@ module ActiveRecord
             value = coder.dump value
           end
 
-          # build relation respecting globalize3 translations
+          # build relation respecting globalize translations
           relation = build_relation(attr_column_class, table, attribute, value)
           relation = relation.and(finder_class.arel_table[finder_class.primary_key.to_sym].not_eq(record.send(:id))) if record.persisted?
 
           Array.wrap(options[:scope]).each do |scope_item|
             if globalized && ([:locale] | record.class.translated_attribute_names).include?(scope_item)
-              # handle globalize3 translated attribute scopes and :locale scope
+              # handle globalize translated attribute scopes and :locale scope
               scope_value = if scope_item == :locale
                               Globalize.locale.to_s
                             else
@@ -51,7 +51,7 @@ module ActiveRecord
             end
           end
 
-          # finalize building & execute query (respecting globalize3 translations)
+          # finalize building & execute query (respecting globalize translations)
           scoped = finder_class.unscoped
           scoped = scoped.joins(:translations) if globalized
           if scoped.where(relation).exists?

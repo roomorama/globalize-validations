@@ -1,4 +1,4 @@
-require File.expand_path(File.join(File.dirname(__FILE__), '../lib/globalize3-validations'))
+require File.expand_path(File.join(File.dirname(__FILE__), '../lib/globalize-validations'))
 
 require 'fileutils'
 require 'logger'
@@ -13,7 +13,7 @@ RSpec.configure do |config|
 
     tmpdir = File.join(File.dirname(__FILE__), "../tmp")
     FileUtils.mkdir(tmpdir) unless File.exist?(tmpdir)
-    log = File.expand_path(File.join(tmpdir, "globalize3_test.log"))
+    log = File.expand_path(File.join(tmpdir, "globalize_test.log"))
     FileUtils.touch(log) unless File.exists?(log)
     ActiveRecord::Base.logger = Logger.new(log)
     ActiveRecord::LogSubscriber.attach_to(:active_record)

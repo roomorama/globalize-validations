@@ -1,4 +1,4 @@
-require "globalize3/validations/version"
+require "globalize/validations/version"
 
 require "active_support"
 require "active_record"

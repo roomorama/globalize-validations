@@ -1,8 +1,8 @@
-# globalize3-validations
+# globalize-validations
 
-[![Build Status](https://travis-ci.org/emjot/globalize3-validations.png?branch=master)](https://travis-ci.org/emjot/globalize3-validations)
+[![Build Status](https://travis-ci.org/roomorama/globalize-validations.png?branch=master)](https://travis-ci.org/roomorama/globalize-validations)
 
-Provides a uniqueness validator which can be used with globalize3 translated models.
+Provides a uniqueness validator which can be used with globalize translated models.
 
 ## Compatibility
 
@@ -17,7 +17,7 @@ The validator is based on the activerecord 3.2 uniqueness validator.
 
 Add this line to your application's Gemfile:
 
-    gem 'globalize3-validations'
+    gem 'globalize-validations'
 
 And then execute:
 
@@ -25,7 +25,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install globalize3-validations
+    $ gem install globalize-validations
 
 ## Usage
 
@@ -33,7 +33,7 @@ Provides a `GlobalizedUniquenessValidator` which checks whether
 the value of the specified attributes are unique across the system.
 
 See validates_uniqueness_of in ActiveRecord::Validations::ClassMethods for further explanation.
-This validator basically works the same, but additionally respects globalize3 model translations.
+This validator basically works the same, but additionally respects globalize model translations.
 Also, you can use :locale when specifying the :scope option. This will scope the validation to the current locale.
 
 For instance, if you want to validate that a product title is unique in each locale:
